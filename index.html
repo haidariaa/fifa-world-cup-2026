@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIFA World Cup 2026 — Interactive Schedule, Groups &amp; Bracket</title>
+  <link rel="preconnect" href="https://flagcdn.com" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="brand-mark">26</div>
+      <div class="brand-text">
+        <h1>FIFA World Cup 2026</h1>
+        <p>Canada &middot; Mexico &middot; United States</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div class="status" id="status">
+        <span class="dot" id="status-dot"></span>
+        <span id="status-text">Loading…</span>
+      </div>
+      <label class="auto-toggle" title="Auto-refresh every 60s">
+        <input type="checkbox" id="auto-refresh" />
+        <span>Auto</span>
+      </label>
+      <button id="refresh-btn" class="btn-refresh">
+        <span class="refresh-icon">⟳</span> Refresh scores
+      </button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-view="schedule">Schedule</button>
+    <button class="tab" data-view="groups">Groups &amp; Standings</button>
+    <button class="tab" data-view="bracket">Knockout Bracket</button>
+    <button class="tab" data-view="eliminated">Eliminated</button>
+    <button class="tab" data-view="predictions">My Picks</button>
+  </nav>
+
+  <main id="app">
+    <!-- SCHEDULE -->
+    <section class="view" id="view-schedule">
+      <div class="sched-controls" id="sched-controls">
+        <button id="filters-toggle" class="btn-ghost" aria-expanded="false">☰ Filters</button>
+        <button id="jump-today" class="btn-ghost">Jump to today</button>
+      </div>
+      <div class="toolbar hidden" id="schedule-toolbar">
+        <input type="search" id="search" class="search" placeholder="Search team, venue or city…" />
+        <select id="filter-stage" class="select" aria-label="Filter by stage">
+          <option value="all">All stages</option>
+          <option value="group">Group stage</option>
+          <option value="knockout">Knockout</option>
+        </select>
+        <select id="filter-group" class="select" aria-label="Filter by group"></select>
+        <select id="filter-team" class="select" aria-label="Filter by team"></select>
+        <label class="chk"><input type="checkbox" id="filter-upcoming" /> Upcoming only</label>
+        <button id="clear-filters" class="btn-ghost">Clear</button>
+      </div>
+      <div id="schedule-list" class="schedule-list"></div>
+    </section>
+
+    <!-- GROUPS -->
+    <section class="view hidden" id="view-groups">
+      <div class="view-controls" id="groups-controls"></div>
+      <div id="groups-grid" class="groups-grid"></div>
+      <div id="best-thirds" class="best-thirds"></div>
+    </section>
+
+    <!-- BRACKET -->
+    <section class="view hidden" id="view-bracket">
+      <div class="view-controls" id="bracket-controls"></div>
+      <p class="bracket-note" id="bracket-note"></p>
+      <div class="bracket-scroll">
+        <div id="bracket-tree" class="bracket"></div>
+      </div>
+    </section>
+
+    <!-- ELIMINATED -->
+    <section class="view hidden" id="view-eliminated">
+      <div class="view-controls" id="elim-controls"></div>
+      <div class="elim-summary" id="elim-summary"></div>
+      <div id="elim-grid" class="elim-grid"></div>
+    </section>
+
+    <!-- MY PICKS -->
+    <section class="view hidden" id="view-predictions">
+      <div class="pred-summary" id="pred-summary"></div>
+      <div id="pred-list" class="pred-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span id="footer-meta"></span>
+  </footer>
+
+  <!-- match detail modal -->
+  <div class="modal-backdrop hidden" id="modal-backdrop">
+    <div class="modal" id="modal"></div>
+  </div>
+
+  <!-- data + logic (classic scripts, load order matters) -->
+  <script src="data/worldcup2026.js"></script>
+  <script src="data/teamfacts.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/standings.js"></script>
+  <script src="js/bracket.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
