@@ -175,7 +175,8 @@ styles.css              # all styling (dark WC26 theme; tree + radial bracket)
 server.js               # Node static server + predictions auto-save API (optional)
 data/worldcup2026.js    # generated dataset -> window.WC_DATA
 data/teamfacts.js       # per-team World Cup history/pedigree -> window.WC_FACTS
-data/predictions.json   # auto-saved predictions (created/updated by server.js)
+data/predictions.example.json  # empty template; copy to predictions.json to start
+data/predictions.json   # your local picks (git-ignored; created/updated by server.js)
 tools/generate-data.js  # source of truth for fixtures/structure; regenerates the dataset
 js/util.js              # flags, country names, date/time formatting, todayISO
 js/standings.js         # group standings engine (real + predicted)
@@ -218,4 +219,11 @@ js/app.js               # state, views, filters, predict mode, radial/tree rende
   anything newer. If the live providers are unreachable, played-but-unbundled matches show
   your predictions rather than real scores.
 - Predictions in `data/predictions.json` are personal progress, not app config — safe to
-  delete/reset; the app recreates it on the next save.
+  delete/reset; the app recreates it on the next save. The file is **git-ignored**; a blank
+  `data/predictions.example.json` ships as the template.
+
+---
+
+## License
+
+Released under the [MIT License](LICENSE) — free to use, modify, and distribute.

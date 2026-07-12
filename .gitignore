@@ -9,3 +9,6 @@
 # Node
 node_modules/
 npm-debug.log*
+
+# Personal predictions (kept local; ship predictions.example.json instead)
+data/predictions.json
