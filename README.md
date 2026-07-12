@@ -1,6 +1,9 @@
 # FIFA World Cup 2026 — Interactive Schedule, Standings & Bracket
 
-**▶ Live demo:** https://haidariaa.github.io/fifa-world-cup-2026/
+**▶ Live demo:** https://the2026worldcup.github.io/
+
+> Unofficial fan project. Not affiliated with, endorsed by, or associated with FIFA. All
+> team/tournament names are used descriptively for a personal, non-commercial web app.
 
 A self-contained web app (plain HTML/CSS/JS — **no build step, no dependencies**) for the
 2026 World Cup across Canada, Mexico & the USA. It ships with the full **104-match
