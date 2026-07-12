@@ -11,6 +11,21 @@ a **predict mode**, and one-click **live score refresh** from FIFA's own data fe
 > Everything runs client-side from static files. The only optional server-side piece is a
 > tiny Node static server that also persists your predictions into the project folder.
 
+## Screenshots
+
+**Radial knockout bracket** — 32 teams around the rim, each winner's flag tracing its
+national colour inward to the trophy:
+
+![Radial bracket](docs/screenshots/radial.png)
+
+**Tree bracket** — Round of 32 → Final with real results and your predicted picks:
+
+![Tree bracket](docs/screenshots/tree.png)
+
+**Schedule** — every match grouped by day with flags, venues, scores and status:
+
+![Schedule](docs/screenshots/schedule.png)
+
 ---
 
 ## Table of contents

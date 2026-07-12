@@ -650,13 +650,20 @@
       return '<circle cx="' + p.x.toFixed(2) + '" cy="' + p.y.toFixed(2) + '" r="' + (r || 0.6) +
         '" class="rdot' + (won ? ' won' : '') + '"' + (won ? ' style="fill:' + color + '"' : '') + '/>';
     }
+    // Tooltip shows which match this flag opens: "Argentina · Quarter-finals · Sat, Jul 11".
+    function nodeTitle(team, mid) {
+      const label = team ? WC.esc(team) : 'TBD';
+      const bx = mid != null && B.byId[mid];
+      if (!bx) return label;
+      return label + ' · ' + WC.roundLabel(bx.match.round) + ' · ' + WC.longDate(bx.match.date);
+    }
     function node(team, p, mid, size, opt) {
       opt = opt || {};
       const cls = 'rnode' + (team ? '' : ' tbd') + (opt.lost ? ' lost' : '') + (opt.ring ? ' adv' : '') + (onPath(team) ? ' champ' : '');
       const style = 'left:' + p.x.toFixed(2) + '%;top:' + p.y.toFixed(2) + '%;width:' + size + 'px;height:' + size + 'px' +
         (opt.ring ? ';--ring:' + opt.ring : '');
       return '<div class="' + cls + '" style="' + style + '" ' +
-        (mid != null ? 'data-match-id="' + mid + '" ' : '') + 'title="' + (team ? WC.esc(team) : 'TBD') + '">' + (team ? flagImg(team) : '') + '</div>';
+        (mid != null ? 'data-match-id="' + mid + '" ' : '') + 'title="' + nodeTitle(team, mid) + '">' + (team ? flagImg(team) : '') + '</div>';
     }
     function ringFor(bx) { return realAdv(bx) ? koTeamColor(bx.winner) : null; }
 
@@ -724,7 +731,7 @@
       });
     });
 
-    const center = '<div class="radial-center" data-match-id="' + finalBx.match.id + '" title="Final">' +
+    const center = '<div class="radial-center" data-match-id="' + finalBx.match.id + '" title="Final · ' + WC.longDate(finalBx.match.date) + '">' +
       '<div class="rc-glow"></div>' +
       '<img class="rc-cup" src="assets/trophy.png" alt="FIFA World Cup trophy" draggable="false">' +
       (champ ? '<div class="rc-name has">' + WC.esc(champ) + '</div>' : '') + '</div>';
