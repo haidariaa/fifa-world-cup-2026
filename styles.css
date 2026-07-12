@@ -661,3 +661,20 @@ tr.q3 .pos-bar { background: var(--accent-3); }
   .predict-bar .pred-count { display: none; }
   .predict-bar .autosave-note { display: none; }
 }
+
+/* ---------- Knockout bracket on phones: make the tree actually usable ---------- */
+@media (max-width: 700px) {
+  /* Unpin the whole bracket control stack so it scrolls away instead of pinning and
+     squeezing the diagram into a tiny box. */
+  #view-bracket .predict-bar,
+  #view-bracket #bracket-controls,
+  #view-bracket #bracket-note,
+  .view-controls { position: static; top: auto; }
+  /* Let the tree take its full natural height — the PAGE scrolls vertically and only the
+     wide bracket scrolls sideways (swipe). No more 200px-tall crammed viewport. */
+  .bracket-scroll { max-height: none; }
+  .bracket { gap: 14px; }
+  .round-col { min-width: 168px; }
+  /* Compact the legend so it doesn't dominate the screen above the bracket. */
+  .bx-legend { gap: 5px 7px; font-size: 11px; }
+}
