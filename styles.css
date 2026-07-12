@@ -634,3 +634,30 @@ tr.q3 .pos-bar { background: var(--accent-3); }
   main { padding: 14px 12px 50px; }
   .day-head { position: static; }
 }
+
+/* ---------- Phone layout: fit everything to the viewport, no horizontal overflow ---------- */
+@media (max-width: 700px) {
+  html, body { overflow-x: hidden; }               /* hard stop on sideways scroll/clipping */
+  .site-header { gap: 10px 12px; }
+  .header-actions { width: 100%; gap: 8px 10px; }  /* status + Auto + Refresh drop to their own row and wrap */
+  .status { font-size: 11px; }
+  .tabs { padding: 10px 12px 0; gap: 5px; }
+  .tab { padding: 9px 13px; font-size: 13px; }
+  main { padding: 14px 12px 50px; }
+  /* Predict-mode bar: full width, compact, wraps instead of overflowing */
+  .sched-controls { gap: 8px; }
+  .predict-bar { margin-left: 0; width: 100%; justify-content: flex-start;
+    padding: 7px 9px; font-size: 12px; gap: 6px 8px; }
+  .predict-bar .btn-ghost { padding: 6px 10px; font-size: 12px; }
+  /* Filter panel controls shrink to fit */
+  .toolbar { padding: 10px; }
+  .search { min-width: 0; width: 100%; flex: 1 1 100%; }
+  .toolbar .select { flex: 1 1 calc(50% - 5px); min-width: 0; }
+  /* One match card per row — never force a 330px column wider than the screen */
+  .match-grid { grid-template-columns: 1fr; }
+}
+/* Very small phones: trim the predict bar's non-essential text to save vertical space */
+@media (max-width: 430px) {
+  .predict-bar .pred-count { display: none; }
+  .predict-bar .autosave-note { display: none; }
+}
